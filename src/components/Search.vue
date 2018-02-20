@@ -19,18 +19,17 @@
         </div>
         <div class="alert alert-danger" role="alert" v-if="error">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            @{{ error }}
+            {{ error }}
         </div>
         <div id="candidates" class="row list-group">
             <div class="item col-xs-4 col-lg-4" v-for="candidate in candidates" :key="candidate.id">
                 <div class="thumbnail">
                     <img class="group list-group-image" :src="candidate.profile_image" />
                     <div class="caption">
-                        <h4 class="group inner list-group-item-heading">@{{ candidate.name }}</h4>
-                        <p class="group inner list-group-item-text">@{{ candidate.biography }}</p>
+                        <h4 class="group inner list-group-item-heading">{{ candidate.name }}</h4>
+                        <p class="group inner list-group-item-text">{{ candidate.biography }}</p>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                <p> Ratings go here</p>
                             </div>
                         </div>
                     </div>
@@ -61,11 +60,12 @@ export default {
       this.loading = true
       axios.get('http://localhost:8000/api/search?q=' + this.query, { crossdomain: true })
         .then(response => {
-          console.log(response.data)
-          response.body.error ? this.error = response.body.error : this.candidates = response.data
-          this.candidates = response.body.data
+          console.log(response.data.error)
+          response.data.error ? this.error = response.data.error : this.candidates = response.data
           this.loading = false
           this.query = ''
+        }).catch(e => {
+          this.error.push(e)
         })
     }
   }
