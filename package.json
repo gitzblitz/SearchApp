@@ -18,7 +18,8 @@
     "bootstrap": "^3.3.7",
     "vue": "^2.5.2",
     "vue-instantsearch": "^1.4.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-star-rating": "^1.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

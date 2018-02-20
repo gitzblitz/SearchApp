@@ -30,6 +30,7 @@
                         <p class="group inner list-group-item-text">{{ candidate.biography }}</p>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
+                                <star-rating :star-size="20" :rating="candidate.rating"></star-rating>
                             </div>
                         </div>
                     </div>
@@ -42,8 +43,10 @@
 
 <script>
 import axios from 'axios'
+import StarRating from 'vue-star-rating/src/star-rating'
 
 export default {
+  components: {StarRating},
   name: 'search',
   data: function () {
     return {
