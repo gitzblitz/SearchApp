@@ -24,7 +24,7 @@
         <div id="candidates" class="row list-group">
             <div class="item col-xs-4 col-lg-4" v-for="candidate in candidates" :key="candidate.id">
                 <div class="thumbnail">
-                    <img class="group list-group-image" :src="candidate.profile_image" />
+                    <img class="group list-group-image" :src="candidate.profile_image" :alt="candidate.name" />
                     <div class="caption">
                         <h4 class="group inner list-group-item-heading">{{ candidate.name }}</h4>
                         <p class="group inner list-group-item-text">{{ candidate.biography }}</p>
@@ -63,7 +63,7 @@ export default {
       this.loading = true
       axios.get('http://localhost:8000/api/search?q=' + this.query, { crossdomain: true })
         .then(response => {
-          console.log(response.data.error)
+          console.log(response.data)
           response.data.error ? this.error = response.data.error : this.candidates = response.data
           this.loading = false
           this.query = ''
