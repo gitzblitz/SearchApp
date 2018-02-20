@@ -1,6 +1,6 @@
-# search-app
+# searchApp
 
-> simple search app using vue js
+> simple search app using vue js for searching candidates by name and city
 
 ## Build Setup
 
