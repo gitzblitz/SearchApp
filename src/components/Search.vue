@@ -63,7 +63,6 @@ export default {
       this.loading = true
       axios.get('http://localhost:8000/api/search?q=' + this.query, { crossdomain: true })
         .then(response => {
-          console.log(response.data)
           response.data.error ? this.error = response.data.error : this.candidates = response.data
           this.loading = false
           this.query = ''
